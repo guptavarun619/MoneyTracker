@@ -20,6 +20,16 @@ class CatagoryRepository {
       throw error;
     }
   }
+
+  async getById(categoryId) {
+    try {
+      const catagories = await Catagory.findByPk(categoryId);
+      return catagories;
+    } catch (error) {
+      console.log("Error in Catagory Repository");
+      throw error;
+    }
+  }
 }
 
 module.exports = CatagoryRepository;

@@ -18,15 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Transaction.init(
     {
-      paid_by: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
       amount: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      catagory: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },

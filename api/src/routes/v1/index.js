@@ -1,5 +1,9 @@
 const express = require("express");
-const { UserController, CategoryController } = require("../../controllers");
+const {
+  UserController,
+  CategoryController,
+  TransactionController,
+} = require("../../controllers");
 
 const router = express.Router();
 
@@ -19,5 +23,7 @@ router.get("/user/all", UserController.getAll);
 
 router.post("/category", CategoryController.create);
 router.get("/category", CategoryController.getAll);
+
+router.post("/transaction", TransactionController.create);
 
 module.exports = router;

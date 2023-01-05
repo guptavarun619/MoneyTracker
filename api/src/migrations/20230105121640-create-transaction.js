@@ -10,15 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      paid_by: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
       amount: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
-      catagory: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },

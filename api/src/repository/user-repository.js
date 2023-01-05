@@ -50,6 +50,16 @@ class UserRepository {
     }
   }
 
+  async getById(userId) {
+    try {
+      const user = await User.findByPk(userId);
+      return user;
+    } catch (error) {
+      console.log("Erorr in user repository");
+      throw error;
+    }
+  }
+
   async getAll() {
     try {
       const users = await User.findAll({
