@@ -38,7 +38,7 @@ const createFriendship = async (req, res) => {
     res.status(500).json({
       success: false,
       data: {},
-      message: "Friendship can not be created",
+      message: "Friendship cannot be created",
       err: error,
     });
   }
@@ -50,14 +50,33 @@ const getFriends = async (req, res) => {
     res.status(200).json({
       success: true,
       data: response,
-      message: "Friends have be fetched successfully",
+      message: "Friends have been fetched successfully",
       err: {},
     });
   } catch (error) {
     res.status(500).json({
       success: false,
       data: {},
-      message: "Friends can not be fetched",
+      message: "Friends cannot be fetched",
+      err: error,
+    });
+  }
+};
+
+const getAll = async (req, res) => {
+  try {
+    const response = await UserService.getAll();
+    res.status(200).json({
+      success: true,
+      data: response,
+      message: "All Users have been fetched successfully",
+      err: {},
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      data: {},
+      message: "All Users cannot be fetched",
       err: error,
     });
   }
@@ -67,4 +86,5 @@ module.exports = {
   create,
   createFriendship,
   getFriends,
+  getAll,
 };

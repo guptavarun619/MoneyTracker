@@ -49,6 +49,18 @@ class UserRepository {
       throw error;
     }
   }
+
+  async getAll() {
+    try {
+      const users = await User.findAll({
+        attributes: ["id", "username"],
+      });
+      return users;
+    } catch (error) {
+      console.log("Erorr in user repository");
+      throw error;
+    }
+  }
 }
 
 module.exports = UserRepository;

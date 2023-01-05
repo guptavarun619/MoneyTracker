@@ -32,8 +32,19 @@ const getFriends = async (userId) => {
   }
 };
 
+const getAll = async () => {
+  try {
+    const response = await userRepository.getAll();
+    return response;
+  } catch (error) {
+    console.log("Erorr in user service");
+    throw error;
+  }
+};
+
 module.exports = {
   create,
   addFreindship,
   getFriends,
+  getAll,
 };

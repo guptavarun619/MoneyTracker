@@ -16,5 +16,6 @@ router.get("/", (req, res) => {
 router.post("/user", UserController.create);
 router.post("/user/addFriends", UserController.createFriendship);
 router.get("/user/getFriends/:id", UserController.getFriends);
+router.get("/user/all", UserController.getAll);
 
 module.exports = router;
