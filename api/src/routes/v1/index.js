@@ -1,4 +1,6 @@
 const express = require("express");
+const { UserController } = require("../../controllers");
+const { UserService } = require("../../services");
 
 const router = express.Router();
 
@@ -10,5 +12,9 @@ router.get("/", (req, res) => {
     err: {},
   });
 });
+
+router.post("/user", UserController.create);
+router.post("/user/addFriends", UserController.createFriendship);
+router.get("/user/getFriends/:id", UserController.getFriends);
 
 module.exports = router;
