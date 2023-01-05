@@ -1,6 +1,5 @@
 const express = require("express");
-const { UserController } = require("../../controllers");
-const { UserService } = require("../../services");
+const { UserController, CategoryController } = require("../../controllers");
 
 const router = express.Router();
 
@@ -17,5 +16,8 @@ router.post("/user", UserController.create);
 router.post("/user/addFriends", UserController.createFriendship);
 router.get("/user/getFriends/:id", UserController.getFriends);
 router.get("/user/all", UserController.getAll);
+
+router.post("/category", CategoryController.create);
+router.get("/category", CategoryController.getAll);
 
 module.exports = router;
