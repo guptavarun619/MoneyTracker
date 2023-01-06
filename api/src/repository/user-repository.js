@@ -26,7 +26,6 @@ class UserRepository {
 
   async getFriends(userId) {
     try {
-      console.log(userId);
       const user = await User.findByPk(userId);
       const friends = user.getFriend();
       return friends;

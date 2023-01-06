@@ -12,6 +12,16 @@ const create = async (data) => {
   }
 };
 
+const getAll = async (data) => {
+  try {
+    const transactions = transactionRepository.getAllTransactions(data);
+    return transactions;
+  } catch (error) {
+    console.log("Error in transaction service");
+    throw error;
+  }
+};
+
 const destory = async (transactionId) => {
   try {
     const response = transactionRepository.destroy(transactionId);
@@ -24,5 +34,6 @@ const destory = async (transactionId) => {
 
 module.exports = {
   create,
+  getAll,
   destory,
 };

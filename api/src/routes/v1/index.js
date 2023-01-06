@@ -17,14 +17,15 @@ router.get("/", (req, res) => {
 });
 
 router.post("/user", UserController.create);
+router.get("/user", UserController.getAll);
 router.post("/user/addFriends", UserController.createFriendship);
 router.get("/user/getFriends/:id", UserController.getFriends);
-router.get("/user/all", UserController.getAll);
 
 router.post("/category", CategoryController.create);
 router.get("/category", CategoryController.getAll);
 
 router.post("/transaction", TransactionController.create);
+router.get("/transaction/", TransactionController.getAll);
 router.delete("/transaction/:id", TransactionController.destroy);
 
 module.exports = router;

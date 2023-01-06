@@ -24,6 +24,29 @@ const create = async (req, res) => {
   }
 };
 
+const getAll = async (req, res) => {
+  try {
+    const response = await TransactionService.getAll({
+      userId: req.body.userId,
+      categoryId: req.body.categoryId,
+      orderByDate: req.body.orderByDate,
+    });
+    res.status(200).json({
+      success: true,
+      message: "Transactions Successfully fetched",
+      data: response,
+      err: {},
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Transactions cannot be fetched, try later",
+      data: {},
+      err: { error },
+    });
+  }
+};
+
 const destroy = async (req, res) => {
   try {
     const response = await TransactionService.destory(req.params.id);
@@ -45,5 +68,6 @@ const destroy = async (req, res) => {
 
 module.exports = {
   create,
+  getAll,
   destroy,
 };

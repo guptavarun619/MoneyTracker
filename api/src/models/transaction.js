@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.User);
       this.belongsTo(models.Catagory);
       this.belongsToMany(models.User, {
-        through: "Ledger",
+        through: "Ledgers",
+        as: "Ledger",
         onDelete: "CASCADE",
       });
     }
