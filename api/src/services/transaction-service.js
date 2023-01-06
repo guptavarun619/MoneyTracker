@@ -12,6 +12,17 @@ const create = async (data) => {
   }
 };
 
+const destory = async (transactionId) => {
+  try {
+    const response = transactionRepository.destroy(transactionId);
+    return response;
+  } catch (error) {
+    console.log("Error in transaction service");
+    throw error;
+  }
+};
+
 module.exports = {
   create,
+  destory,
 };

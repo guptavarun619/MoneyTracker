@@ -25,5 +25,6 @@ router.post("/category", CategoryController.create);
 router.get("/category", CategoryController.getAll);
 
 router.post("/transaction", TransactionController.create);
+router.delete("/transaction/:id", TransactionController.destroy);
 
 module.exports = router;

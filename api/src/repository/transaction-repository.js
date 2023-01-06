@@ -39,6 +39,20 @@ class TransactionRepository {
       throw error;
     }
   }
+
+  async destroy(transactionId) {
+    try {
+      await Transaction.destroy({
+        where: {
+          id: transactionId,
+        },
+      });
+      return true;
+    } catch (error) {
+      console.log("Erorr in transaction repository", error);
+      throw error;
+    }
+  }
 }
 
 module.exports = TransactionRepository;

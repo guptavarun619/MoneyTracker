@@ -2,7 +2,6 @@ const { TransactionService } = require("../services");
 
 const create = async (req, res) => {
   try {
-    console.log(req.body);
     const response = await TransactionService.create({
       amount: req.body.amount,
       paidById: req.body.paidById,
@@ -25,6 +24,26 @@ const create = async (req, res) => {
   }
 };
 
+const destroy = async (req, res) => {
+  try {
+    const response = await TransactionService.destory(req.params.id);
+    res.status(200).json({
+      success: true,
+      message: "Transaction has been deleted successfully",
+      data: { response },
+      err: {},
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Transaction cannot be deleted, try later",
+      data: {},
+      err: { error },
+    });
+  }
+};
+
 module.exports = {
   create,
+  destroy,
 };
