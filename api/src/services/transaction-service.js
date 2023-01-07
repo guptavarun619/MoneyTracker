@@ -1,9 +1,14 @@
-const { TransactionRepository } = require("../repository/index");
+const {
+  TransactionRepository,
+  LedgerRepository,
+} = require("../repository/index");
 
 const transactionRepository = new TransactionRepository();
+const ledgerRepository = new LedgerRepository();
 
 const create = async (data) => {
   try {
+    if (data.includePayerd) data.splitWith.push(data.paidById);
     const transaction = transactionRepository.create(data);
     return transaction;
   } catch (error) {
@@ -14,7 +19,7 @@ const create = async (data) => {
 
 const getAll = async (data) => {
   try {
-    const transactions = transactionRepository.getAllTransactions(data);
+    const transactions = transactionRepository.getAll(data);
     return transactions;
   } catch (error) {
     console.log("Error in transaction service");
@@ -32,8 +37,25 @@ const destory = async (transactionId) => {
   }
 };
 
+const getLedgers = async (data) => {
+  try {
+    // console.log(data);
+    const lent = await ledgerRepository.getAllByTransaction(data);
+    const owed = await ledgerRepository.getAllByUser(data);
+    response = {
+      lent: lent,
+      owed: owed,
+    };
+    return response;
+  } catch (error) {
+    console.log("Error in transaction service");
+    throw error;
+  }
+};
+
 module.exports = {
   create,
   getAll,
   destory,
+  getLedgers,
 };

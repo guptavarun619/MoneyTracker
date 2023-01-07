@@ -25,7 +25,8 @@ router.post("/category", CategoryController.create);
 router.get("/category", CategoryController.getAll);
 
 router.post("/transaction", TransactionController.create);
-router.get("/transaction/", TransactionController.getAll);
+router.get("/transaction", TransactionController.getAll);
 router.delete("/transaction/:id", TransactionController.destroy);
+router.get("/transaction/ledger/:id", TransactionController.getLedgers);
 
 module.exports = router;

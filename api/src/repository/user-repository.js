@@ -16,7 +16,7 @@ class UserRepository {
       const user1 = await User.findByPk(data.userId1);
       const user2 = await User.findByPk(data.userId2);
       user1.addFriend(user2);
-      // user1.addUser(user2);
+      user2.addFriend(user1);
       return true;
     } catch (error) {
       console.log("Erorr in user repository");
