@@ -4,6 +4,7 @@ import SignUp from "./SignUp";
 import Transactions from "./Transactions";
 import ProtectedRoutes from "./ProtectedRoutes";
 import PageNotFound from "./PageNotFound";
+import Ledger from "./Ledger";
 
 export {
   SignIn,
@@ -12,4 +13,5 @@ export {
   PageNotFound,
   Transactions,
   ProtectedRoutes,
+  Ledger,
 };

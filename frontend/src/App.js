@@ -8,8 +8,10 @@ import {
   Transactions,
   ProtectedRoutes,
   PageNotFound,
+  Ledger,
 } from "./pages/index.js";
 import { AuthContext } from "./contexts/AuthContext";
+import Navbar from "./components/Navbar.js";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -36,9 +38,7 @@ function App() {
             }}
           >
             <header className="App-header">
-              <h1 className="py-2 text-5xl font-bold text-center">
-                Money Tracker 💸
-              </h1>
+              <Navbar />
             </header>
             <Routes>
               <Route path="/" element={<Homepage />} />
@@ -46,6 +46,7 @@ function App() {
               <Route path="/signin" element={<SignIn />} />
               <Route element={<ProtectedRoutes />}>
                 <Route path="/transactions" element={<Transactions />} />
+                <Route path="/ledgers" element={<Ledger />} />
               </Route>
               <Route path="*" element={<PageNotFound />} />
             </Routes>
