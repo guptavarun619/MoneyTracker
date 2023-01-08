@@ -51,7 +51,10 @@ const signIn = async (username, plainPassword) => {
       username: user.username,
       id: user.id,
     });
-    return newAuthToken;
+    return {
+      authToken: newAuthToken,
+      userId: user.id,
+    };
   } catch (error) {
     console.log("Something went wrong in the sign-in process (service layer)");
     throw error;
