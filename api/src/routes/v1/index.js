@@ -16,7 +16,9 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/user", UserController.create);
+router.post("/authenticate", UserController.isAuthenticated);
+router.post("/signup", UserController.create);
+router.post("/signin", UserController.signIn);
 router.get("/user", UserController.getAll);
 router.post("/user/addFriends", UserController.createFriendship);
 router.get("/user/getFriends/:id", UserController.getFriends);

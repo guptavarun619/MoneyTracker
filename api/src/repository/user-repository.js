@@ -70,6 +70,20 @@ class UserRepository {
       throw error;
     }
   }
+
+  async getByUsername(username) {
+    try {
+      const user = await User.findOne({
+        where: {
+          username: username,
+        },
+      });
+      return user;
+    } catch (error) {
+      console.log("Erorr in user repository");
+      throw error;
+    }
+  }
 }
 
 module.exports = UserRepository;

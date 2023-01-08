@@ -22,6 +22,48 @@ const create = async (req, res) => {
   }
 };
 
+const signIn = async (req, res) => {
+  try {
+    const authToken = await UserService.signIn(
+      req.body.username,
+      req.body.password
+    );
+    res.status(200).json({
+      data: authToken,
+      success: true,
+      message: "Successfully signed in",
+      err: {},
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: {},
+      success: false,
+      message: "Unable to Signin",
+      err: { error },
+    });
+  }
+};
+
+const isAuthenticated = async (req, res) => {
+  try {
+    const token = req.headers["x-access-token"];
+    const response = await UserService.isAuthenticated(token);
+    res.status(200).json({
+      data: response,
+      success: true,
+      message: "User is authenticated and token is valid",
+      err: {},
+    });
+  } catch (error) {
+    res.status(500).json({
+      data: {},
+      success: false,
+      message: "Token is invalid",
+      err: { error },
+    });
+  }
+};
+
 const createFriendship = async (req, res) => {
   try {
     const response = await UserService.addFreindship({
@@ -87,4 +129,6 @@ module.exports = {
   createFriendship,
   getFriends,
   getAll,
+  signIn,
+  isAuthenticated,
 };
