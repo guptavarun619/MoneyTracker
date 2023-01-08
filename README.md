@@ -34,5 +34,11 @@ JWT_KEY = string_for_jwt_generation
 
 Not much need to setup, except goto `/frontend` directory of the repository and do following :
 
+- Create `.env` file in `/frontend` directory and add the following :
+
+```
+REACT_APP_MONEY_TRACKER_BASE_URL = http://localhost:3000 (or whatever port you started api server on)
+```
+
 - Install all dependencies by running `npm install`
 - Start the frontend server by running `npm run start`
