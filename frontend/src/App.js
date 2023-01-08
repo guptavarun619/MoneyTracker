@@ -25,7 +25,7 @@ function App() {
   const client = new QueryClient();
   return (
     <QueryClientProvider client={client}>
-      <div className="App w-screen h-screen">
+      <div className="App container ml-auto mr-auto">
         <BrowserRouter>
           <AuthContext.Provider
             value={{

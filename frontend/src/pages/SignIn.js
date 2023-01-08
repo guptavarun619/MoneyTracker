@@ -48,6 +48,7 @@ const SignIn = () => {
       // set the userId in 'AuthContext'
       setClientUserId(response.data.userId);
       // redirect to homepage page
+      console.log(response.data.authToken, "/tranasction");
       navigate("/transactions");
     }
   };
