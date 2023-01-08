@@ -127,4 +127,5 @@ module.exports = {
   getAll,
   signIn,
   isAuthenticated,
+  verifyToken,
 };

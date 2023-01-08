@@ -31,11 +31,13 @@ const create = async (req, res) => {
 
 const getAll = async (req, res) => {
   try {
-    const response = await TransactionService.getAll({
-      userId: req.body.userId,
-      categoryId: req.body.categoryId,
-      orderByDate: req.body.orderByDate,
-    });
+    // console.log(req.header("authToken"));
+    // console.log(req.query.categoryId, req.query.orderByDate);
+    const response = await TransactionService.getAll(
+      req.header("authToken"),
+      req.query.categoryId,
+      req.query.orderByDate
+    );
     res.status(200).json({
       success: true,
       message: "Transactions Successfully fetched",

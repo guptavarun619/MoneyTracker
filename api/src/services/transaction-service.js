@@ -1,10 +1,13 @@
 const {
   TransactionRepository,
   LedgerRepository,
+  UserRepository,
 } = require("../repository/index");
+const { verifyToken } = require("./user-service");
 
 const transactionRepository = new TransactionRepository();
 const ledgerRepository = new LedgerRepository();
+const userRepository = new UserRepository();
 
 const create = async (data) => {
   try {
@@ -17,9 +20,14 @@ const create = async (data) => {
   }
 };
 
-const getAll = async (data) => {
+const getAll = async (authToken, categoryId, orderByDate) => {
   try {
-    const transactions = transactionRepository.getAll(data);
+    const user = await verifyToken(authToken);
+    const transactions = await transactionRepository.getAll({
+      userId: user.id,
+      categoryId: categoryId,
+      orderByDate: orderByDate,
+    });
     return transactions;
   } catch (error) {
     console.log("Error in transaction service");
